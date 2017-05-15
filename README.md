@@ -1,40 +1,47 @@
-# Content: Unsupervised Learning
-## Project: Creating Customer Segments
+# Customer Segments Creation (usnupervised Learning)
 
-### Install
+## Project Overview
 
-This project requires **Python 2.7** and the following Python libraries installed:
 
-- [NumPy](http://www.numpy.org/)
-- [Pandas](http://pandas.pydata.org)
-- [matplotlib](http://matplotlib.org/)
-- [scikit-learn](http://scikit-learn.org/stable/)
+### Application Domain
+The target market for this project are companies that collect vast amounts of data on customers, and want to understand the relationships hidden in their customer base. The knowledge extracted can assist the design of products and services that best satisfy the customers.
 
-You will also need to have software installed to run and execute a [Jupyter Notebook](http://ipython.org/notebook.html)
 
-If you do not have Python installed yet, it is highly recommended that you install the [Anaconda](http://continuum.io/downloads) distribution of Python, which already has the above packages and more included. Make sure that you select the Python 2.7 installer and not the Python 3.x installer. 
+### Use Case
+ - A wholesale distributor recently tested a change to their delivery method for some customers, by moving from a morning delivery service five days a week to a cheaper evening delivery service three days a week. 
+ - Initial testing did not discover any significant unsatisfactory results, so they implemented the cheaper option for all customers. 
+ - Almost immediately, the distributor began getting complaints about the delivery service change and customers were canceling deliveries, losing the distributor more money than what was being saved. 
 
-### Code
 
-Template code is provided in the `customer_segments.ipynb` notebook file. You will also be required to use the included `visuals.py` Python file and the `housing.csv` dataset file to complete your work. While some code has already been implemented to get you started, you will need to implement additional functionality when requested to successfully complete the project. Note that the code included in `visuals.py` is meant to be used out-of-the-box and not intended for students to manipulate. If you are interested in how the visualizations are created in the notebook, please feel free to explore this Python file.
+### Goal
 
-### Run
+The the of the analysis is to find what types of customers are there, and which ones are sensitive to the delivery service proposed.
+The premise is that unsupervised learning techniques can help to find out if similarities exist between customers, and how to best segment customers into categories that have different prorities.
 
-In a terminal or command window, navigate to the top-level project directory `customer_segments/` (that contains this README) and run one of the following commands:
+### Process Outline
 
-```bash
-ipython notebook customer_segments.ipynb
-```  
-or
-```bash
-jupyter notebook customer_segments.ipynb
-```
+This is a summary of the steps proposed:  
+1. subset a sample and determine if any product categories highly correlate with one another. 
+2. preprocess the data by scaling each product category and then identifying (and removing) unwanted outliers. 
+3. apply PCA transformations to the data
+4. implement clustering algorithms to segment the transformed customer data. 
+5. compare the segmentation found with an additional labeling
+6. consider ways this information could assist the wholesale distributor with future service changes.
 
-This will open the Jupyter Notebook software and project file in your browser.
 
-## Data
+### Data analysis skills involved:
 
-The customer segments data is included as a selection of 440 data points collected on data found from clients of a wholesale distributor in Lisbon, Portugal. More information can be found on the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Wholesale+customers).
+- feature scaling and outlier detection.
+- interpreting data points that have been scaled, transformed, or reduced from PCA.
+- analyzing PCA dimensions and construction of a new feature space.
+- clustering a set of data to find hidden patterns.
+- assessing information given by cluster data and application.
+
+
+
+## Dataset
+ 
+The data contains examples of clients of a wholesale distributor, and can be found in the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Wholesale+customers).
 
 Note (m.u.) is shorthand for *monetary units*.
 
@@ -47,3 +54,19 @@ Note (m.u.) is shorthand for *monetary units*.
 6) `Delicatessen`: annual spending (m.u.) on and delicatessen products (Continuous); 
 7) `Channel`: {Hotel/Restaurant/Cafe - 1, Retail - 2} (Nominal)
 8) `Region`: {Lisnon - 1, Oporto - 2, or Other - 3} (Nominal) 
+
+
+### Validation of results
+The features `'Channel'` and `'Region'` will be held out in the unsupervised learning analysis — and they will be used at the end to validate the outcome of the segmentation process.
+
+
+## Project Files
+
+This project contains three files:
+
+- `customer_segments.ipynb`: This is the main file where you will be performing your work on the project.
+- `customers.csv`: The project dataset. You'll load this data in the notebook.
+- `visuals.py`: This Python script provides supplementary visualizations for the project. Do not modify.
+ 
+
+
